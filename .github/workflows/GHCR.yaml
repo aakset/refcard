@@ -28,5 +28,5 @@ jobs:
           context: .
           file: ./m346-ref-card-02-main/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.aakset }}/refcard:${{ github.sha }}
+          tags: ghcr.io/${{ github.repository_owner }}/refcard:${{ github.sha }}
 
