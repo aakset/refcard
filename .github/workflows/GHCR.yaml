@@ -1,1 +1,32 @@
+name: publish-docker-image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish-docker-image:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Publish Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./m346-ref-card-02-main/Dockerfile
+          push: true
+          tags: ghcr.io/${{ github.aakset }}/refcard:${{ github.sha }}
 
