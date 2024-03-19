@@ -2,7 +2,7 @@ FROM node:20-alpine AS build
 ENV NODE_ENV development
 
 WORKDIR /app
-COPY . .
+COPY ./m346-ref-card-02-main/package.json .
 
 RUN npm i
 RUN npm run build
