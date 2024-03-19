@@ -22,6 +22,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: refcard/m346-ref-card-02-main/Dockerfile
+          file: ./m346-ref-card-02-main/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/refcard:${{ github.sha }}
